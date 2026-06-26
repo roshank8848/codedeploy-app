@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: index.html
-    destination: /usr/share/nginx/html/
+    destination: /var/www/html/
 hooks:
   BeforeInstall:
     - location: scripts/stop_server.sh
@@ -14,5 +14,9 @@ hooks:
       runas: root
   ValidateService:
     - location: scripts/validate_service.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: scripts/stop_server.sh
       timeout: 300
       runas: root
