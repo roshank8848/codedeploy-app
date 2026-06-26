@@ -3,20 +3,16 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo "Build started on `date`"
-      # Set default version to build if not specified
-      - APP_VERSION=${APP_VERSION:-sampleapp-v1}
-      - echo "Selected application version to build: ${APP_VERSION}"
+      - echo "Starting pre-build phase..."
   build:
     commands:
       - echo "Building and packaging application..."
-      # Create a build directory for packaging
       - mkdir -p build_output
-      # Copy files from the selected sampleapp directory to the build output directory
-      - cp -R ${APP_VERSION}/* build_output/
+      # Hardcoded to copy everything from a specific folder, or modify as needed
+      - cp -R sampleapp-v1/* build_output/
   post_build:
     commands:
-      - echo "Build completed on `date`"
+      - echo "Build completed successfully."
 
 artifacts:
   files:
